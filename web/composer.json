@@ -1,0 +1,15 @@
+{
+    "name": "st-servicetechnique/web",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "agustinquintero",
+            "email": "agustin.quintero@limayrac.fr"
+        }
+    ],
+    "require": {}
+}
