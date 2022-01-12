@@ -13,11 +13,11 @@
     - nom de domaine
     - ssl (https)
     - google ads ( map, ref, …)
--Serveur mail
+- Serveur mail
     - contact@st-servicetechnique.fr
     - list des mail ou redirection vers adresse mail
     - mails automatiques ( relances, impayés, facture disponible …)
--(Gestion des planning )
+- (Gestion des planning )
     - Gestion des chantier
     - gestion des ouvrier
     - planification
