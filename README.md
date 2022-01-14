@@ -25,7 +25,3 @@
 
 ## Projet Web pour l'entreprise réalisé par
 - Agustin QUINTERO.
-
-`` https://www.youtube.com/watch?v=GTESlsYTUns ``
-- 01:02:00
-- erreur controlleur + static ... regarder max h-10min
