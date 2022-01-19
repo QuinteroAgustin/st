@@ -8,6 +8,7 @@
 /**
  * Démarage de la session PHP
  */
+include('app/classes/Flash.php');
 session_start();
 
 /**

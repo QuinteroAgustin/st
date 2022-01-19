@@ -1,3 +1,8 @@
+<?php
+/**
+ * template.php
+ */
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,9 +19,13 @@
     <?php include ROOT.'/views/menu.php'?>
     <!-- Content -->
     <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+        <?php
+            $messages = New Flash();
+            $messages->afficher();//n'arrive pas a afficher le flash qu'une seul fois reprendre dem
+        ?>
         <?= $content ?>
     </div>
-
+    
     <!-- Footer -->
     <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
         <h4>Footer</h4>
