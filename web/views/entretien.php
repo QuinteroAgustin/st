@@ -1,4 +1,4 @@
-<?php $title = 'Entretien'; ob_start(); require './../init.php'; ?>
+<?php $title = 'Entretien'; ob_start(); require './../init.php';?>
 
 <div class="w3-panel">
     <h1><b><?= $title ?></b></h1>

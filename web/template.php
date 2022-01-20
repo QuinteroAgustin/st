@@ -19,10 +19,6 @@
     <?php include ROOT.'/views/menu.php'?>
     <!-- Content -->
     <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
-        <?php
-            $messages = New Flash();
-            $messages->afficher();//n'arrive pas a afficher le flash qu'une seul fois reprendre dem
-        ?>
         <?= $content ?>
     </div>
     

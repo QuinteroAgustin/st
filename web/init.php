@@ -58,3 +58,8 @@ function my_autoloader($classe) {
 }
 spl_autoload_register('my_autoloader');
 ?>
+
+<?php
+  $messages = New Flash();
+  $messages->afficher()->remove_messages()->put();
+?>

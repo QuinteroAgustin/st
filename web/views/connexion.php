@@ -1,4 +1,4 @@
-<?php $title = 'Connexion'; ob_start(); require './../init.php'; ?>
+<?php $title = 'Connexion'; ob_start(); require './../init.php';?>
 
 <h1><?=$title?></h1>
 

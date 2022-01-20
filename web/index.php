@@ -1,6 +1,5 @@
-<?php $title = 'Accueil'; ob_start(); require './init.php'; ?>
+<?php $title = 'Accueil'; ob_start(); require './init.php';?>
 <?php
-
   $slidershows = New SlidershowDAO();
   $slidershows = $slidershows->findAll();
 
