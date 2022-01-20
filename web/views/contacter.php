@@ -5,11 +5,12 @@
   $sujet = isset($_POST['sujet'])?$_POST['sujet']:NULL;
   $message = isset($_POST['message'])?$_POST['message']:NULL;
   $imgs = isset($_POST['imgs'])?$_POST['imgs']:NULL;
-  
-  if(isset($_POST['submit'])){
+  $submit = isset($_POST['submit'])?$_POST['submit']:NULL;
+
+  if($submit){
     $flash = New Flash();
-    $flash->set_title('Bravo !')->set_type('green')->add_messages('Vous vous êtes bien inscrit : test')->put();
-    
+    $flash->set_title('Bravo !')->set_type('green')->add_messages('Merci de nous avoir contactez votre demande sera traité dans les plus brefs délées')->put();
+    header('Location: /index.php');
   }
   
   
@@ -50,9 +51,9 @@
     </div>
     <div class="w3-section">
       <label>Photo</label>
-      <input type='file' class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="imgs" required>
+      <input type='file' class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="imgs">
     </div>
-    <button type="submit" class="w3-button w3-block w3-black" name='submit'>Envoyer</button>
+    <input type="submit" class="w3-button w3-block w3-black" name='submit' value="Envoyer">
   </form>
 </div>
 

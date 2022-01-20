@@ -66,19 +66,21 @@ class Flash {
     }
 
     public function afficher(){
+        $msg = '';
         if (count($this->messages) > 0) {
-            echo '<div class="w3-panel w3-'.$this->type.'">';
-            echo '<h3>'.$this->title.'</h3>';
-            echo '<ul>';
+            $msg .= '<div class="w3-panel w3-'.$this->type.' w3-display-container w3-round-xlarge">';
+            $msg .= "<span onclick=\"this.parentElement.style.display='none'\" class=\"w3-button w3-display-topright w3-round-xlarge\">&times;</span>";
+            $msg .= '<h3>'.$this->title.'</h3>';
+            $msg .= '<ul>';
             foreach ($this->messages as $message) {
-                echo '<li>'.$message.'</li>';
+                $msg .= '<li>'.$message.'</li>';
             }
-            echo '</ul>';
-            echo '</div>';
+            $msg .= '</ul>';
+            $msg .= '</div>';
         }
-        return $this;
+        return $msg;
     }
-
+    
     //Function de fill sur les setter
     public function fill(Flash $tableau){
         foreach($tableau as $key => $valeur){
