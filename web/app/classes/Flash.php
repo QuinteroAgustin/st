@@ -5,7 +5,7 @@ class Flash {
     public $type;
 
     public function __construct(){
-        if($_SESSION['flash'] != NULL){
+        if(isset($_SESSION['flash'])){
             $this->fill($_SESSION['flash']);
         }else{
             $_SESSION['flash'] = $this;
