@@ -77,9 +77,9 @@ CREATE TABLE message(
         id      Int  Auto_increment  NOT NULL ,
         nom     Varchar (60) NOT NULL ,
         email   Varchar (60) NOT NULL ,
-        subject Varchar (60) NOT NULL ,
+        subject Varchar (255) NOT NULL ,
         message Longtext NOT NULL ,
-        imgs    Varchar (60) NOT NULL ,
+        imgs    Varchar (60) NULL ,
         date    Datetime NOT NULL
 	,CONSTRAINT message_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;

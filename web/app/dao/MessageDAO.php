@@ -54,4 +54,27 @@
         // Retourne un tableau d'objets
         return $messages;
     } // function findAll()
+
+    /**
+    * Insert un message
+    * @param Message
+    * @return 
+    */
+    function insert(Message $message) {
+        $sql = "INSERT INTO message (nom, email, subject, message, imgs, date) VALUES (:nom, :email, :subject, :message, :imgs, CURRENT_TIME)";
+        $params = array(
+            ":nom" => $message->get_nom(),
+            ":email" => $message->get_email(),
+            ":subject" => $message->get_subject(),
+            ":message" => $message->get_message(),
+            ":imgs" => $message->get_imgs()
+        );
+        try {
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        return $nb;
+    } // function insert()
  }

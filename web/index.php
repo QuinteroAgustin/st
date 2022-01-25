@@ -12,6 +12,7 @@
 <div class="w3-panel">
   <h1><b><?= $title ?></b></h1>
   <p>Bienvenue chez ST- Service Technique, entreprise familiale</p>
+  <a href="/views/admin/pannel.php">Admin</a>
 </div>
 
 <!-- Slideshow -->

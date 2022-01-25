@@ -4,12 +4,14 @@
   $flash = New Flash();
   $dao_message = New MessageDAO();
 
+//Par rapport a l'upload d'images
+
 //Vérifie si des valeurs en post sont déjà saisie
   $nom = isset($_POST['nom'])?$_POST['nom']:NULL;
   $email = isset($_POST['email'])?$_POST['email']:NULL;
   $subject = isset($_POST['subject'])?$_POST['subject']:NULL;
   $message = isset($_POST['message'])?$_POST['message']:NULL;
-  $imgs = isset($_POST['imgs'])?$_POST['imgs']:NULL;
+  $images_name = '';
   $submit = isset($_POST['submit'])?$_POST['submit']:NULL;
 //tableau d'erreur
   $messages = array();
@@ -47,25 +49,75 @@
       }
     }
 
+    if(!empty($_FILES['imgs'])){
+      if (count($_FILES['imgs']['name']) < 5) {
+        $imgs = array();
+        for ($i=0;$i<count($_FILES['imgs']['name']);$i++) {
+            $imgs[] = array(
+        'nameFile' => $_FILES['imgs']['name'][$i],
+        'full_path' => $_FILES['imgs']['full_path'][$i],
+        'type' => $_FILES['imgs']['type'][$i],
+        'tmp_name' => $_FILES['imgs']['tmp_name'][$i],
+        'error' => $_FILES['imgs']['error'][$i],
+        'size' => $_FILES['imgs']['size'][$i],
+        'extension' => explode('.', $_FILES['imgs']['name'][$i])
+      );
+        }
+
+        $extensions = ['png','jpg','jpeg','gif'];
+        $type = ['image/png','image/jpg','image/jpeg','image/gif'];
+        $max_siez = 2000000;
+        foreach ($imgs as $img) {
+          if (in_array($img['type'], $type)) {
+            if (count($img['extension']) <= 2 && in_array(strtolower(end($img['extension'])), $extensions)) {
+              if ($img['size'] <= $max_siez && $img['error'] == 0) {
+                $file_name = uniqid().'.'.strtolower(end($img['extension']));
+                $images_name .= $file_name.',';
+                if (move_uploaded_file($img['tmp_name'], './img'.$file_name)) {
+                  $flash->set_title('Bravo !')->set_type('green')->add_messages('Images bien envoyée');
+                } else {
+                  $messages[] = "Erreur lors de l'envoie de l'image.";
+                }
+              } else {
+                $messages[] = "Les images sont trop volumineuses.";
+              }
+            } else {
+              $messages[] = "Le Type des images n'est pas autorisée.";
+            }
+          } else {
+            $messages[] = "Le Type des images n'est pas autorisée.";
+          }
+        }
+        $images_name = rtrim($images_name, ',');
+      }else{
+        $messages[] = "Vous ne pouvez envoyer que 5 images par messages.";
+      }
+    }
+
+    //partie qui enregistre dans la bdd
     if(empty($messages)){
       $values = array(
         'nom' => $nom,
         'email' => $email,
         'subject' => $subject,
         'message' => $message,
-        'imgs' => $img,
+        'imgs' => $images_name,
       );
       $obj_message = New Message($values);
-      //$dao_message = $dao_message->insert($obj_message);
-      $flash->set_title('Bravo !')->set_type('green')->add_messages('Merci de nous avoir contactez votre demande sera traité dans les plus brefs délées')->put();
-      header('Location: /index.php');
+      $dao_message = $dao_message->insert($obj_message);
+      if($dao_message == 1){
+        $flash->set_title('Bravo !')->set_type('green')->add_messages('Merci de nous avoir contactez votre demande sera traité dans les plus brefs délées')->put();
+        header('Location: /index.php');
+      }else{
+        $flash->set_title('Erreur !')->set_type('red')->add_messages('Une erreur c\'est produite appeler un administrateur')->put();
+        header('Location: /contacter.php');
+      }
     }
   }
-  
-  
 ?>
 
 <?php
+//affichage des erreurs
 $msg ='';
 if (count($messages) > 0) {
   $msg .= '<div class="w3-panel w3-red w3-display-container w3-round-xlarge">';
@@ -73,7 +125,7 @@ if (count($messages) > 0) {
   $msg .= '<h3>Erreur !</h3>';
   $msg .= '<ul>';
   foreach ($messages as $a) {
-      $msg .= '<li>'.$a.'</li>';
+    $msg .= '<li>'.$a.'</li>';
   }
   $msg .= '</ul>';
   $msg .= '</div>';
@@ -99,7 +151,7 @@ if (count($messages) > 0) {
   <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Nous contacter</span>
 </div>
 
-  <form class="w3-container" action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
+  <form class="w3-container" action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' enctype="multipart/form-data">
     <div class="w3-section">
       <label>Nom</label>
       <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="nom" value="<?= $nom ?>" required>
@@ -118,7 +170,7 @@ if (count($messages) > 0) {
     </div>
     <div class="w3-section">
       <label>Photo</label>
-      <input type='file' class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="imgs">
+      <input type='file' class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="imgs[]" multiple>
     </div>
     <input type="submit" class="w3-button w3-block w3-black" name='submit' value="Envoyer">
   </form>
