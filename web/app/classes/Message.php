@@ -7,6 +7,7 @@ class Message {
     private $message;
     private $imgs;
     private $date;
+    private $active;
     
     // Constructeur
     public function __construct(array $tableau = null)
@@ -152,6 +153,26 @@ class Message {
     public function set_date($date)
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of date
+     */ 
+    public function get_active()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the value of date
+     *
+     * @return  self
+     */ 
+    public function set_active($active)
+    {
+        $this->active = $active;
 
         return $this;
     }

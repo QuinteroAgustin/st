@@ -49,19 +49,19 @@
       }
     }
 
-    if(!empty($_FILES['imgs'])){
-      if (count($_FILES['imgs']['name']) < 5) {
+    if(!empty($_FILES['imgs']) && !empty($_FILES['imgs']['name'][0])){
+      if (count($_FILES['imgs']['name']) < 5 && count($_FILES['imgs']['name']) >= 1) {
         $imgs = array();
         for ($i=0;$i<count($_FILES['imgs']['name']);$i++) {
-            $imgs[] = array(
-        'nameFile' => $_FILES['imgs']['name'][$i],
-        'full_path' => $_FILES['imgs']['full_path'][$i],
-        'type' => $_FILES['imgs']['type'][$i],
-        'tmp_name' => $_FILES['imgs']['tmp_name'][$i],
-        'error' => $_FILES['imgs']['error'][$i],
-        'size' => $_FILES['imgs']['size'][$i],
-        'extension' => explode('.', $_FILES['imgs']['name'][$i])
-      );
+          $imgs[] = array(
+          'nameFile' => $_FILES['imgs']['name'][$i],
+          'full_path' => $_FILES['imgs']['full_path'][$i],
+          'type' => $_FILES['imgs']['type'][$i],
+          'tmp_name' => $_FILES['imgs']['tmp_name'][$i],
+          'error' => $_FILES['imgs']['error'][$i],
+          'size' => $_FILES['imgs']['size'][$i],
+          'extension' => explode('.', $_FILES['imgs']['name'][$i])
+          );
         }
 
         $extensions = ['png','jpg','jpeg','gif'];
@@ -73,7 +73,7 @@
               if ($img['size'] <= $max_siez && $img['error'] == 0) {
                 $file_name = uniqid().'.'.strtolower(end($img['extension']));
                 $images_name .= $file_name.',';
-                if (move_uploaded_file($img['tmp_name'], './img'.$file_name)) {
+                if (move_uploaded_file($img['tmp_name'], ROOT.'/img/'.$file_name)) {
                   $flash->set_title('Bravo !')->set_type('green')->add_messages('Images bien envoyée');
                 } else {
                   $messages[] = "Erreur lors de l'envoie de l'image.";
