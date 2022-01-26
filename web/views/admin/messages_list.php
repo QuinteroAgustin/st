@@ -8,7 +8,7 @@
     $recherche = isset($_POST['recherche'])?$_POST['recherche']:NULL;
     $submit = isset($_POST['submit'])?$_POST['submit']:NULL;
     if($submit && $recherche != null){
-        $messages = $dao_message->rechercher($recherche);
+        $messages = $dao_message->recherche($recherche);
     }else{
         $messages = $dao_message->findAll();
     }

@@ -108,7 +108,7 @@
     * @return \Message
     */
     function recherche($recherche) {
-        $sql = "SELECT * FROM message WHERE id LIKE :recherche OR nom LIKE :recherche OR prenom LIKE :recherche OR email LIKE :recherche OR tel LIKE :recherche OR adresse LIKE :recherche OR ville LIKE :recherche OR cp LIKE :recherche OR ORDER BY date DESC";
+        $sql = "SELECT * FROM message WHERE id LIKE :recherche OR nom LIKE :recherche OR prenom LIKE :recherche OR email LIKE :recherche OR tel LIKE :recherche OR adresse LIKE :recherche OR ville LIKE :recherche OR cp LIKE :recherche ORDER BY date DESC";
         try {
             $params = array(
                 ":recherche" => "%".$recherche."%"
