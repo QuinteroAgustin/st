@@ -76,7 +76,12 @@ CREATE TABLE type_entretien(
 CREATE TABLE message(
         id      Int  Auto_increment  NOT NULL ,
         nom     Varchar (60) NOT NULL ,
+        prenom  Varchar (60) NOT NULL ,
         email   Varchar (60) NOT NULL ,
+        tel     Varchar (15) NOT NULL ,
+        adresse Varchar (255) NOT NULL ,
+        ville   Varchar (50) NOT NULL ,
+        cp      Varchar (10) NOT NULL ,
         subject Varchar (60) NOT NULL ,
         message Longtext NOT NULL ,
         imgs    Varchar (255) ,

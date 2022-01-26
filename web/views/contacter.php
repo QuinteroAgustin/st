@@ -8,7 +8,12 @@
 
 //Vérifie si des valeurs en post sont déjà saisie
   $nom = isset($_POST['nom'])?$_POST['nom']:NULL;
+  $prenom = isset($_POST['prenom'])?$_POST['prenom']:NULL;
   $email = isset($_POST['email'])?$_POST['email']:NULL;
+  $tel = isset($_POST['tel'])?(int)$_POST['tel']:NULL;
+  $adresse = isset($_POST['adresse'])?$_POST['adresse']:NULL;
+  $ville = isset($_POST['ville'])?$_POST['ville']:NULL;
+  $cp = isset($_POST['cp'])?(int)$_POST['cp']:NULL;
   $subject = isset($_POST['subject'])?$_POST['subject']:NULL;
   $message = isset($_POST['message'])?$_POST['message']:NULL;
   $images_name = '';
@@ -22,12 +27,60 @@
     }
     $nom = filter_var($nom, FILTER_UNSAFE_RAW);
 
+    if(empty(trim($prenom))){
+      $messages[] = "Le PRENOM est obligatoire.";
+    }
+    $prenom = filter_var($prenom, FILTER_UNSAFE_RAW);
+
     if(empty(trim($email))){
       $messages[] = "L'EMAIL est obligatoire.";
     }else{
       $email = filter_var($email, FILTER_SANITIZE_EMAIL);
       if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
           $messages[] = "L'EMAIL n'est pas un email valide.";
+      }
+    }
+
+    if(empty(trim($tel))){
+      $messages[] = "L'TELEPHONE est obligatoire.";
+    }else{
+      $tel = filter_var($tel, FILTER_SANITIZE_NUMBER_INT);
+      if(filter_var($tel, FILTER_VALIDATE_INT) === false){
+        $messages[] = "L'TELEPHONE n'est pas un numéro valide a.";
+      }else{
+        var_dump($tel);
+        var_dump($_POST['tel']);
+        if(strlen($tel) < 9){
+          $messages[] = "L'TELEPHONE n'est pas un numéro valide b.";
+        }
+        if(strlen($tel) > 13){
+          $messages[] = "L'TELEPHONE n'est pas un numéro valide c.";
+        }
+      }
+    }
+
+    if(empty(trim($adresse))){
+      $messages[] = "L'ADRESSE est obligatoire.";
+    }
+    $adresse = filter_var($adresse, FILTER_UNSAFE_RAW);
+
+    if(empty(trim($ville))){
+      $messages[] = "La VILLE est obligatoire.";
+    }
+    $ville = filter_var($ville, FILTER_UNSAFE_RAW);
+
+    if(empty(trim($cp))){
+      $messages[] = "Le CODE POSTAL est obligatoire.";
+    }else{
+      $cp = filter_var($cp, FILTER_SANITIZE_NUMBER_INT);
+      if(filter_var($cp, FILTER_VALIDATE_INT) === false){
+        $messages[] = "L'CODE POSTAL n'est pas un numéro valide.";
+        if(strlen($cp) < 5){
+          $messages[] = "L'CODE POSTAL n'est pas un numéro valide.";
+        }
+        if(strlen($cp) > 5){
+          $messages[] = "L'CODE POSTAL n'est pas un numéro valide.";
+        }
       }
     }
 
@@ -98,7 +151,12 @@
     if(empty($messages)){
       $values = array(
         'nom' => $nom,
+        'prenom' => $prenom,
         'email' => $email,
+        'tel' => $tel,
+        'adresse' => $adresse,
+        'ville' => $ville,
+        'cp' => $cp,
         'subject' => $subject,
         'message' => $message,
         'imgs' => $images_name,
@@ -157,8 +215,28 @@ if (count($messages) > 0) {
       <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="nom" value="<?= $nom ?>" required>
     </div>
     <div class="w3-section">
+      <label>Prenom</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="prenom" value="<?= $prenom ?>" required>
+    </div>
+    <div class="w3-section">
       <label>Email</label>
       <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="email" value="<?= $email ?>" required>
+    </div>
+    <div class="w3-section">
+      <label>Téléphone ou Portable</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="number" name="tel" value="<?= $tel ?>" required>
+    </div>
+    <div class="w3-section">
+      <label>Adresse</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="adresse" value="<?= $adresse ?>" required>
+    </div>
+    <div class="w3-section">
+      <label>Ville</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="ville" value="<?= $ville ?>" required>
+    </div>
+    <div class="w3-section">
+      <label>Code postal</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="number" name="cp" value="<?= $cp ?>" required>
     </div>
     <div class="w3-section">
       <label>Sujet</label>

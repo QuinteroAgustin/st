@@ -2,3 +2,13 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 .mySlides {display:none}
 .w3-tag, .fa {cursor:pointer}
 .w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+
+.st-margin-top-26 {
+    margin-top : 26px;
+}
+.st-padding-right-16 {
+    padding-right : 16px;
+}
+.st-padding-left-16 {
+    padding-left : 16px;
+}

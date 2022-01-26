@@ -2,7 +2,12 @@
 class Message {
     private $id;
     private $nom;
+    private $prenom;
     private $email;
+    private $tel;
+    private $adresse;
+    private $ville;
+    private $cp;
     private $subject;
     private $message;
     private $imgs;
@@ -173,6 +178,106 @@ class Message {
     public function set_active($active)
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prenom
+     */ 
+    public function get_prenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set the value of prenom
+     *
+     * @return  self
+     */ 
+    public function set_prenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tel
+     */ 
+    public function get_tel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set the value of tel
+     *
+     * @return  self
+     */ 
+    public function set_tel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of adresse
+     */ 
+    public function get_adresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set the value of adresse
+     *
+     * @return  self
+     */ 
+    public function set_adresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ville
+     */ 
+    public function get_ville()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set the value of ville
+     *
+     * @return  self
+     */ 
+    public function set_ville($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of cp
+     */ 
+    public function get_cp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set the value of cp
+     *
+     * @return  self
+     */ 
+    public function set_cp($cp)
+    {
+        $this->cp = $cp;
 
         return $this;
     }

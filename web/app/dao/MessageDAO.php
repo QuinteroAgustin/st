@@ -40,7 +40,7 @@
     * @return array
     */
     function findAll() {
-        $sql = "SELECT * FROM message";
+        $sql = "SELECT * FROM message ORDER BY date DESC";
         try {
             $sth=$this->executer($sql); 
             $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -61,10 +61,15 @@
     * @return 
     */
     function insert(Message $message) {
-        $sql = "INSERT INTO message (nom, email, subject, message, imgs, date, active) VALUES (:nom, :email, :subject, :message, :imgs, CURRENT_TIME, :active)";
+        $sql = "INSERT INTO message (nom, prenom, email, tel, adresse, ville, cp, subject, message, imgs, date, active) VALUES (:nom, :prenom, :email, :tel, :adresse, :ville, :cp, :subject, :message, :imgs, CURRENT_TIME, :active)";
         $params = array(
             ":nom" => $message->get_nom(),
+            ":prenom" => $message->get_prenom(),
             ":email" => $message->get_email(),
+            ":tel" => $message->get_tel(),
+            ":adresse" => $message->get_adresse(),
+            ":ville" => $message->get_ville(),
+            ":cp" => $message->get_cp(),
             ":subject" => $message->get_subject(),
             ":message" => $message->get_message(),
             ":imgs" => $message->get_imgs(),
@@ -78,4 +83,46 @@
         }
         return $nb;
     } // function insert()
+
+    /**
+    * compte le nombre de messages non lu
+    * @param 
+    * @return Int
+    */
+    function count() {
+        $sql = "SELECT count(*) as nb FROM message WHERE active=1";
+        try {
+            $sth=$this->executer($sql); 
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $row['nb'];
+    } // function count()
+
+    /**
+    * Lecture des messages avec des critères
+    * @param critere 
+    * @return \Message
+    */
+    function recherche($recherche) {
+        $sql = "SELECT * FROM message WHERE id LIKE :recherche OR nom LIKE :recherche OR prenom LIKE :recherche OR email LIKE :recherche OR tel LIKE :recherche OR adresse LIKE :recherche OR ville LIKE :recherche OR cp LIKE :recherche OR ORDER BY date DESC";
+        try {
+            $params = array(
+                ":recherche" => "%".$recherche."%"
+            );
+            $sth=$this->executer($sql, $params); 
+            $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        $messages = array();
+        foreach ($rows as $row) {
+            $messages[] = new Message($row);
+        }
+        // Retourne un tableau d'objets
+        return $messages;
+    } // function findAll()
  }

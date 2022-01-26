@@ -1,6 +1,6 @@
 <?php
 /**
- * template.php
+ * templateadmin.php
  */
 ?>
 <!DOCTYPE html>
@@ -14,17 +14,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/all.css">
 </head>
 <body>
-    <div class="w3-display-container w3-blue w3-top" style="height:26px;">
-        <div class="w3-display-topleft st-padding-left-16">06 09 30 31 78</div>
-        <div class="w3-display-topmiddle">quintero.entreprise@gmail.com</div>
-        <div class="w3-display-topright st-padding-right-16">385 chem. de la petite graverie 31250 Revel</div>
-    </div>
-    <?php include ROOT.'/views/menu.php'?>
+    <?php include ROOT.'/views/admin/menu.php'?>
     <!-- Content -->
-    <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
-        <?= $content ?>
+    <div style="margin-left:50px">
+        <div class="w3-container">
+            <?= $content ?>
+        </div>
     </div>
     
     <!-- Footer -->
