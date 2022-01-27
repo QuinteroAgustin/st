@@ -283,6 +283,29 @@ class Message {
     }
 
     /**
+     * obtenir un bon numero
+     *
+     * @return  $tel
+     */ 
+    public function get_tel_format()
+    {
+        if(strlen($this->get_tel()) == 9){
+            if(substr($this->get_tel(), 0, 1) != 0){
+                return '+33'.$this->get_tel();
+            }
+        }else{
+            if (strlen($this->get_tel()) == 11) {
+                if(substr($this->get_tel(), 0, 2) == 33){
+                    return '+'.$this->get_tel();
+                }
+            }else{
+                return '(NA)'.$this->get_tel();
+            }
+        }
+        
+    }
+
+    /**
      * Hydrateur
      * Alimente les propriétés à partir d'un tableau
      * @param array $tableau

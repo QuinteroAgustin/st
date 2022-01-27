@@ -48,7 +48,6 @@
       if(filter_var($tel, FILTER_VALIDATE_INT) === false){
         $messages[] = "L'TELEPHONE n'est pas un numéro valide a.";
       }else{
-        var_dump($tel);
         var_dump($_POST['tel']);
         if(strlen($tel) < 9){
           $messages[] = "L'TELEPHONE n'est pas un numéro valide b.";
@@ -103,7 +102,7 @@
     }
 
     if(!empty($_FILES['imgs']) && !empty($_FILES['imgs']['name'][0])){
-      if (count($_FILES['imgs']['name']) < 5 && count($_FILES['imgs']['name']) >= 1) {
+      if (count($_FILES['imgs']['name']) <= 5 && count($_FILES['imgs']['name']) >= 1) {
         $imgs = array();
         for ($i=0;$i<count($_FILES['imgs']['name']);$i++) {
           $imgs[] = array(

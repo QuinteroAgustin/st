@@ -56,6 +56,30 @@
     } // function findAll()
 
     /**
+    * Lecture de tous les messages par page
+    * @return array
+    */
+    function findAllPage($limit, $offset) {
+        $sql = "SELECT * FROM message ORDER BY date DESC LIMIT :limit,:offset;";
+        try {
+            $sth=$this->pdo->prepare($sql);
+            $sth->bindValue(':limit',$limit,PDO::PARAM_INT);
+            $sth->bindValue(':offset',$offset,PDO::PARAM_INT);
+            $sth->execute();
+            $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+            
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        $messages = array();
+        foreach ($rows as $row) {
+            $messages[] = new Message($row);
+        }
+        // Retourne un tableau d'objets
+        return $messages;
+    } // function findAllPage()
+
+    /**
     * Insert un message
     * @param Message
     * @return 
@@ -107,6 +131,31 @@
     * @param critere 
     * @return \Message
     */
+
+    /**
+    * compte le nombre de messages non lu
+    * @param 
+    * @return Int
+    */
+    function countTotal() {
+        $sql = "SELECT count(*) as nb FROM message";
+        try {
+            $sth=$this->executer($sql); 
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $row['nb'];
+    } // function countTotal()
+
+    /**
+    * Lecture des messages avec des critères
+    * @param critere 
+    * @return \Message
+    */
+
     function recherche($recherche) {
         $sql = "SELECT * FROM message WHERE id LIKE :recherche OR nom LIKE :recherche OR prenom LIKE :recherche OR email LIKE :recherche OR tel LIKE :recherche OR adresse LIKE :recherche OR ville LIKE :recherche OR cp LIKE :recherche ORDER BY date DESC";
         try {
@@ -124,5 +173,68 @@
         }
         // Retourne un tableau d'objets
         return $messages;
-    } // function findAll()
+    } // function rechercher()
+
+    /**
+    * met me msg en lu
+    * @param id
+    * @return Int
+    */
+    function messageLu($id) {
+        $sql = "UPDATE message SET active=0 WHERE id=:id";
+        try {
+            $params = array(
+                ":id" => $id
+            );
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $nb;
+    } // function messageLu()
+
+    /**
+    * met le msg en non lu
+    * @param id
+    * @return Int
+    */
+    function messageNonLu($id) {
+        $sql = "UPDATE message SET active=1 WHERE id=:id";
+        try {
+            $params = array(
+                ":id" => $id
+            );
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $nb;
+    } // function messageNonLu()
+
+    /**
+    * compte le nombre de messages non lu
+    * @param id
+    * @return Int
+    */
+    function delete($id) {
+        $sql = "DELETE FROM message WHERE id=:id";
+        try {
+            $params = array(
+                ":id" => $id
+            );
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $nb;
+    } // function delete()
  }
