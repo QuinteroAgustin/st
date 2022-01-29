@@ -14,12 +14,12 @@ $dao_post = New PostDAO();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Post page d'accueil <span class="w3-badge"><?= $dao_post->count() ?></span></h3>
+                <h3>Réglage de l'accueil <span class="w3-badge"><?= $dao_post->count() ?></span></h3>
             </header>
             <div class="w3-container w3-padding">
                 <p>1 new friend request</p>
                 <hr>
-                <a href="" class="w3-button w3-blue">Liste des posts</a>
+                <a href="reglages.php" class="w3-button w3-blue">Réglages</a>
             </div>
         </div>
     </div>

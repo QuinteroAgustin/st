@@ -54,4 +54,22 @@
         // Retourne un tableau d'objets
         return $card_employees;
     } // function findAll()
+
+    /**
+    * compte le nb de card_employees
+    * @param 
+    * @return Int
+    */
+    function count() {
+        $sql = "SELECT count(*) as nb FROM card_employee WHERE active=1";
+        try {
+            $sth=$this->executer($sql); 
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $row['nb'];
+    } // function count()
  }
