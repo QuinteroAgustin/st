@@ -16,7 +16,7 @@ $card_employees=$dao_card_employee->findAll();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Immages <span class="w3-badge"><?= $dao_slidershow->count() ?></span></h3>
+                <h3>Immages <span class="w3-badge"><?= $dao_slidershow->count() ?></span> <a href="" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
             </header>
             <div class="w3-container w3-padding">
                 <table class="w3-table-all">
@@ -24,7 +24,7 @@ $card_employees=$dao_card_employee->findAll();
                         <th>Nom</th>
                         <th>Emplacement</th>
                         <th>Active</th>
-                        <th>Action <a href="./message_detail.php?id='.$message->get_id().'"><i class="fas fa-plus" style="color:green;"></i></a></th>
+                        <th>Action</th>
                     </tr>
                 <?php
                 foreach($slidershows as $slidershow){
@@ -32,7 +32,7 @@ $card_employees=$dao_card_employee->findAll();
                     echo '<td>'.$slidershow->get_text().'</td>';
                     echo '<td>'.$slidershow->get_display().'</td>';
                     echo '<td>'.$slidershow->get_active().'</td>';
-                    echo '<td></td>';
+                    echo '<td><a href="reglages.php" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href=""><i class="fa fa-trash" style="color:red;"></i></a></td>';
                     echo '</tr>';
                 }
                 ?>
@@ -43,7 +43,8 @@ $card_employees=$dao_card_employee->findAll();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Postes <span class="w3-badge w3-green"><?= $dao_post->count() ?></span></h3>
+                <h3>Postes <span class="w3-badge"><?= $dao_post->count() ?></span> <a href="" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
+                
             </header>
             <div class="w3-container w3-padding">
                 <table class="w3-table-all">
@@ -51,7 +52,7 @@ $card_employees=$dao_card_employee->findAll();
                         <th>Titre</th>
                         <th>Emplacement</th>
                         <th>Active</th>
-                        <th>Action <a href="./message_detail.php?id='.$message->get_id().'"><i class="fas fa-plus" style="color:green;"></i></a></th>
+                        <th>Action</th>
                     </tr>
                 <?php
                 foreach($posts as $post){
@@ -59,7 +60,7 @@ $card_employees=$dao_card_employee->findAll();
                     echo '<td>'.$post->get_title().'</td>';
                     echo '<td>'.$post->get_position_img().'</td>';
                     echo '<td>'.$post->get_active().'</td>';
-                    echo '<td></td>';
+                    echo '<td><a href="reglages.php" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href=""><i class="fa fa-trash" style="color:red;"></i></a></td>';
                     echo '</tr>';
                 }
                 ?>
@@ -70,7 +71,7 @@ $card_employees=$dao_card_employee->findAll();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Les membres <span class="w3-badge w3-red"><?= $dao_card_employee->count() ?></span></h3>
+                <h3>Les membres <span class="w3-badge"><?= $dao_card_employee->count() ?></span> <a href="" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
             </header>
             <div class="w3-container w3-padding">
                 <table class="w3-table-all">
@@ -78,7 +79,7 @@ $card_employees=$dao_card_employee->findAll();
                         <th>Nom prenom</th>
                         <th>Rôle</th>
                         <th>Active</th>
-                        <th>Action <a href="./message_detail.php?id='.$message->get_id().'"><i class="fas fa-plus" style="color:green;"></i></a></th>
+                        <th>Action</th>
                     </tr>
                 <?php
                 foreach($card_employees as $card_employee){
@@ -86,7 +87,7 @@ $card_employees=$dao_card_employee->findAll();
                     echo '<td>'.$card_employee->get_nom_prenom().'</td>';
                     echo '<td>'.$card_employee->get_role().'</td>';
                     echo '<td>'.$card_employee->get_active().'</td>';
-                    echo '<td></td>';
+                    echo '<td><a href="reglages.php" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href=""><i class="fa fa-trash" style="color:red;"></i></a></td>';
                     echo '</tr>';
                 }
                 ?>

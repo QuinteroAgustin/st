@@ -14,7 +14,7 @@ $dao_post = New PostDAO();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Réglage de l'accueil <span class="w3-badge"><?= $dao_post->count() ?></span></h3>
+                <h3>Réglage de l'accueil <span class="w3-badge w3-right"><?= $dao_post->count() ?></span></h3>
             </header>
             <div class="w3-container w3-padding">
                 <p>1 new friend request</p>
@@ -26,7 +26,7 @@ $dao_post = New PostDAO();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Nombre d'entretiens <span class="w3-badge w3-green">0</span></h3>
+                <h3>Nombre d'entretiens <span class="w3-badge w3-green w3-right">0</span></h3>
             </header>
             <div class="w3-container w3-padding">
                 <p>1 new friend request</p>
@@ -38,7 +38,7 @@ $dao_post = New PostDAO();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Messages non Lu <span class="w3-badge w3-red"><?= $dao_message->count() ?></span></h3>
+                <h3>Messages non Lu <span class="w3-badge w3-red w3-right"><?= $dao_message->count() ?></span></h3>
             </header>
             <div class="w3-container w3-padding">
                 <p>1 new friend request</p>
@@ -50,7 +50,7 @@ $dao_post = New PostDAO();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Nombre d'utilisateur <span class="w3-badge"><?= $dao_user->count() ?></span></h3>
+                <h3>Nombre d'utilisateur <span class="w3-badge w3-right"><?= $dao_user->count() ?></span></h3>
             </header>
             <div class="w3-container w3-padding">
                 <p>1 new friend request</p>

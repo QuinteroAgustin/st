@@ -69,7 +69,7 @@
         echo '<td class="w3-hide-small">'.$message->get_email().'</td>';
         echo '<td>'.substr($message->get_subject(),0,30).'..</td>';
         echo '<td>'.$date->format('d-m H:i').'</td>';
-        echo '<td class="w3-right-align"><a href="./message_detail.php?id='.$message->get_id().'"><i class="fas fa-plus" style="color:green;"></i></a>&nbsp;&nbsp;<a href="?page='.$currentPage.'&id='.$message->get_id().'"><i class="fas fa-book"></i></a>&nbsp;&nbsp;<a href="./message_remove.php?id='.$message->get_id().'"><i class="fa fa-trash" style="color:red;"></i></a></td>';
+        echo '<td class="w3-right-align"><a class="w3-bar-item w3-button" href="./message_detail.php?id='.$message->get_id().'"><i class="fas fa-plus" style="color:green;"></i></a>&nbsp;<a class="w3-bar-item w3-button" href="?page='.$currentPage.'&id='.$message->get_id().'"><i class="fas fa-book"></i></a>&nbsp;<a class="w3-bar-item w3-button" href="./message_remove.php?id='.$message->get_id().'"><i class="fa fa-trash" style="color:red;"></i></a></td>';
         echo '</tr>';
     }
     ?>

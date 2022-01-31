@@ -48,7 +48,6 @@
       if(filter_var($tel, FILTER_VALIDATE_INT) === false){
         $messages[] = "L'TELEPHONE n'est pas un numéro valide a.";
       }else{
-        var_dump($_POST['tel']);
         if(strlen($tel) < 9){
           $messages[] = "L'TELEPHONE n'est pas un numéro valide b.";
         }
