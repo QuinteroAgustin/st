@@ -38,14 +38,14 @@
             foreach($imgs as $img){
                 echo '<div class="w3-third">';
                 echo '<div class="w3-card-4 st-margin-bottom-26">';
-                echo '<img src="/img/'.$img.'" alt="'.$img.'" style="width:100%" onclick="document.getElementById(\''.$img.'\').style.display=\'block\'" class="w3-hover-opacity">';
+                echo '<img src="/img/message/'.$img.'" alt="'.$img.'" style="width:100%" onclick="document.getElementById(\''.$img.'\').style.display=\'block\'" class="w3-hover-opacity">';
                 echo '<div class="w3-container w3-center">';
                 echo '<p>Image nom: '.$img.'</p>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '<div id="'.$img.'" class="w3-modal w3-animate-zoom" onclick="this.style.display=\'none\'">';
-                echo '<img class="w3-modal-content" src="/img/'.$img.'">';
+                echo '<img class="w3-modal-content" src="/img/message/'.$img.'">';
                 echo '</div>';
             } 
         }

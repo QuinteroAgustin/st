@@ -122,9 +122,9 @@
           if (in_array($img['type'], $type)) {
             if (count($img['extension']) <= 2 && in_array(strtolower(end($img['extension'])), $extensions)) {
               if ($img['size'] <= $max_siez && $img['error'] == 0) {
-                $file_name = uniqid().'.'.strtolower(end($img['extension']));
+                $file_name = 'message_'.uniqid().'.'.strtolower(end($img['extension']));
                 $images_name .= $file_name.',';
-                if (move_uploaded_file($img['tmp_name'], ROOT.'/img/'.$file_name)) {
+                if (move_uploaded_file($img['tmp_name'], ROOT.'/img/message/'.$file_name)) {
                   $flash->set_title('Bravo !')->set_type('green')->add_messages('Images bien envoyée');
                 } else {
                   $messages[] = "Erreur lors de l'envoie de l'image.";

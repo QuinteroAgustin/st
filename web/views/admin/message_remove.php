@@ -25,7 +25,7 @@
         if ($message->get_imgs() != null) {
             $imgs = explode(',', $message->get_imgs());
             foreach ($imgs as $img) {
-                unlink(ROOT.'/img/'.$img);
+                unlink(ROOT.'/img/message/'.$img);
             }
         }
         if($dao_message->delete($message->get_id()) == 1){

@@ -72,4 +72,49 @@
         // Retourne un entier
         return $row['nb'];
     } // function count()
+
+    /**
+    * Insert une photo
+    * @param Slidershow
+    * @return Int
+    */
+    function insert(Slidershow $img) {
+        $sql = "INSERT INTO slidershow (img, active, display, text) VALUES (:img, :active, :display, :text)";
+        $params = array(
+            ":img" => $img->get_img(),
+            ":active" => $img->get_active(),
+            ":display" => $img->get_display(),
+            ":text" => $img->get_text()
+        );
+        try {
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        return $nb;
+    } // function insert()
+
+    /**
+    * update une photo
+    * @param Slidershow
+    * @return Int
+    */
+    function update(Slidershow $img) {
+        $sql = "UPDATE slidershow SET img=:img, active=:active, display=:display, text=:text WHERE id=:id";
+        $params = array(
+            ":id"=>$img->get_id(),
+            ":img" => $img->get_img(),
+            ":active" => $img->get_active(),
+            ":display" => $img->get_display(),
+            ":text" => $img->get_text()
+        );
+        try {
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        return $nb;
+    } // function update()
  }
