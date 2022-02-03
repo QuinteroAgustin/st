@@ -85,7 +85,7 @@
     * @return 
     */
     function insert(Message $message) {
-        $sql = "INSERT INTO message (nom, prenom, email, tel, adresse, ville, cp, subject, message, imgs, date, active) VALUES (:nom, :prenom, :email, :tel, :adresse, :ville, :cp, :subject, :message, :imgs, CURRENT_TIME, :active)";
+        $sql = "INSERT INTO message (nom, prenom, email, tel, adresse, ville, cp, subject, message, imgs, date, active, id_user) VALUES (:nom, :prenom, :email, :tel, :adresse, :ville, :cp, :subject, :message, :imgs, CURRENT_TIME, :active, :id_user)";
         $params = array(
             ":nom" => $message->get_nom(),
             ":prenom" => $message->get_prenom(),
@@ -97,7 +97,8 @@
             ":subject" => $message->get_subject(),
             ":message" => $message->get_message(),
             ":imgs" => $message->get_imgs(),
-            ":active" => 1
+            ":active" => 1,
+            ":id_user" => $message->get_id_user()
         );
         try {
             $sth=$this->executer($sql, $params); 

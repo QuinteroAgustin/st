@@ -56,10 +56,16 @@
 <?php
 foreach($posts as $post){
   if ($post->get_active() == 1) {
-      echo '<div class="w3-row w3-padding-64" id="about">';
-      if ($post->get_position_img() == 0) {
+    echo '<div class="w3-row w3-padding-64" id="about">';
+    if(!empty($post->get_img())){
+      if(empty($post->get_title())){
+        echo '<div class="w3-col w3-center w3-padding-large">';
+        echo '<img src="/img/accueil/'.$post->get_img().'" class="w3-round w3-image" alt="Image post" width="100%" height="100%">';
+        echo '</div>';
+      }else{
+        if ($post->get_position_img() == 0) {
           echo '<div class="w3-col m6 w3-padding-large">';
-          echo '<img src="/img/accueil/'.$post->get_img().'" class="w3-round w3-image w3-opacity-min" alt="Image post" width="600" height="750">';
+          echo '<img src="/img/accueil/'.$post->get_img().'" class="w3-round w3-image" alt="Image post" width="100%" height="100%">';
           echo '</div>';
           echo '<div class="w3-col m6 w3-padding-large">';
           echo '<h1 class="w3-center">'.$post->get_title().'</h1><br>';
@@ -67,7 +73,7 @@ foreach($posts as $post){
           echo '<p class="w3-large">'.$post->get_message().'</p>';
           echo '<p class="w3-large w3-text-grey w3-hide-medium">'.$post->get_sub_message().'</p>';
           echo '</div>';
-      } else {
+        } else {
           echo '<div class="w3-col m6 w3-padding-large">';
           echo '<h1 class="w3-center">'.$post->get_title().'</h1><br>';
           echo '<h5 class="w3-center">'.$post->get_sub_title().'</h5>';
@@ -75,10 +81,21 @@ foreach($posts as $post){
           echo '<p class="w3-large w3-text-grey w3-hide-medium">'.$post->get_sub_message().'</p>';
           echo '</div>';
           echo '<div class="w3-col m6 w3-padding-large">';
-          echo '<img src="/img/accueil/'.$post->get_img().'" class="w3-round w3-image w3-opacity-min" alt="Image post" width="600" height="750">';
+          echo '<img src="/img/accueil/'.$post->get_img().'" class="w3-round w3-image w3-opacity-min" alt="Image post" width="100%" height="100%">';
           echo '</div>';
+        }
       }
-      echo '</div>';
+    }else{
+      if(!empty($post->get_title())){
+        echo '<div class="w3-col w3-padding-large">';
+        echo '<h1 class="w3-center">'.$post->get_title().'</h1><br>';
+        echo '<h5 class="w3-center">'.$post->get_sub_title().'</h5>';
+        echo '<p class="w3-large">'.$post->get_message().'</p>';
+        echo '<p class="w3-large w3-text-grey w3-hide-medium">'.$post->get_sub_message().'</p>';
+        echo '</div>';
+      }
+    }
+    echo '</div>';
   }
 }
 ?>

@@ -33,8 +33,11 @@ CREATE TABLE slidershow(
         img     Varchar (60) NOT NULL ,
         active  Int NOT NULL ,
         display Varchar (15) ,
-        text    Varchar (15)
+        text    Varchar (15) ,
+        id_user Int NOT NULL
 	,CONSTRAINT slidershow_PK PRIMARY KEY (id)
+
+	,CONSTRAINT slidershow_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 
 
@@ -44,13 +47,14 @@ CREATE TABLE slidershow(
 
 CREATE TABLE post(
         id           Int  Auto_increment  NOT NULL ,
-        title        Varchar (60) NOT NULL ,
-        sub_title    Varchar (60) NOT NULL ,
-        message      Mediumtext NOT NULL ,
-        sub_message  Mediumtext NOT NULL ,
+        title        Varchar (60) ,
+        sub_title    Varchar (60) ,
+        message      Mediumtext ,
+        sub_message  Mediumtext ,
         img          Varchar (60) NOT NULL ,
         position_img Int NOT NULL ,
         active       Int NOT NULL ,
+        date         Datetime NOT NULL ,
         id_user      Int NOT NULL
 	,CONSTRAINT post_PK PRIMARY KEY (id)
 
@@ -86,8 +90,11 @@ CREATE TABLE message(
         message Longtext NOT NULL ,
         imgs    Varchar (255) ,
         date    Datetime NOT NULL ,
-        active  Int NOT NULL
+        active  Int NOT NULL ,
+        id_user Int NOT NULL
 	,CONSTRAINT message_PK PRIMARY KEY (id)
+
+	,CONSTRAINT message_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 
 
@@ -134,7 +141,10 @@ CREATE TABLE card_employee(
         role        Varchar (60) NOT NULL ,
         description Text NOT NULL ,
         img         Varchar (60) NOT NULL ,
-        active      Int NOT NULL
+        active      Int NOT NULL ,
+        id_user     Int NOT NULL
 	,CONSTRAINT card_employee_PK PRIMARY KEY (id)
+
+	,CONSTRAINT card_employee_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 

@@ -5,6 +5,7 @@ class Slidershow {
     private $active;
     private $display;
     private $text;
+    private $id_user;
 
     // Constructeur
     public function __construct(array $tableau = null)
@@ -110,6 +111,26 @@ class Slidershow {
     public function set_text($text)
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_user
+     */ 
+    public function get_id_user()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Set the value of id_user
+     *
+     * @return  self
+     */ 
+    public function set_id_user($id_user)
+    {
+        $this->id_user = $id_user;
 
         return $this;
     }

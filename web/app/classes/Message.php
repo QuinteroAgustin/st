@@ -13,6 +13,7 @@ class Message {
     private $imgs;
     private $date;
     private $active;
+    private $id_user;
     
     // Constructeur
     public function __construct(array $tableau = null)
@@ -303,6 +304,26 @@ class Message {
             }
         }
         
+    }
+
+    /**
+     * Get the value of id_user
+     */ 
+    public function get_id_user()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Set the value of id_user
+     *
+     * @return  self
+     */ 
+    public function set_id_user($id_user)
+    {
+        $this->id_user = $id_user;
+
+        return $this;
     }
 
     /**

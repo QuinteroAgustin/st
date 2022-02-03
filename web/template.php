@@ -17,8 +17,8 @@
 </head>
 <body>
     <div class="w3-display-container w3-blue w3-top" style="height:26px;">
-        <div class="w3-display-topleft st-padding-left-16">06 09 30 31 78</div>
-        <div class="w3-display-topmiddle">quintero.entreprise@gmail.com</div>
+        <div class="w3-display-topleft st-padding-left-16"><a href="tel:+33609303178">+33 6 09 30 31 78</a></div>
+        <div class="w3-display-topmiddle"><a href="mailto:quintero.entreprise@gmail.com">quintero.entreprise@gmail.com</a></div>
         <div class="w3-display-topright st-padding-right-16">385 chem. de la petite graverie 31250 Revel</div>
     </div>
     <?php include ROOT.'/views/menu.php'?>

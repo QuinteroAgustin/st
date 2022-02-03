@@ -9,6 +9,7 @@ class Post {
     private $position_img;
     private $active;
     private $id_user;
+    private $date;
 
     // Constructeur
     public function __construct(array $tableau = null)
@@ -199,6 +200,26 @@ class Post {
     }
 
     /**
+     * Get the value of date
+     */ 
+    public function get_date()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set the value of date
+     *
+     * @return  self
+     */ 
+    public function set_date($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
      * Hydrateur
      * Alimente les propriétés à partir d'un tableau
      * @param array $tableau
@@ -212,4 +233,6 @@ class Post {
             }
         }
     }
+
+    
 }

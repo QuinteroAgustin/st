@@ -1,4 +1,4 @@
-<?php $title = 'Supprimer une image'; ob_start(); require './../../init.php';?>
+<?php $title = 'Supprimer un membre'; ob_start(); require './../../init.php';?>
 <?php
 
 $dao_slidershow = New SlidershowDAO();
@@ -8,14 +8,14 @@ $submit=isset($_POST['submit'])?$_POST['submit']:NULL;
     
 //check si le message a un id
 if($id==null){
-    $flash->set_title('Erreur ! #00004')->set_type('red')->add_messages('Une erreur c\'est produite, votre image n\'existe pas ou plus')->put();
+    $flash->set_title('Erreur !')->set_type('red')->add_messages('Une erreur c\'est produite, votre image n\'existe pas ou plus')->put();
     header('Location: ./reglages.php');
     exit;
 }
 //check si le message existe
 $slidershow = $dao_slidershow->find($id);
 if($slidershow == null){
-    $flash->set_title('Erreur ! #00003')->set_type('red')->add_messages('Une erreur c\'est produite, votre image n\'existe pas ou plus')->put();
+    $flash->set_title('Erreur !')->set_type('red')->add_messages('Une erreur c\'est produite, votre image n\'existe pas ou plus')->put();
     header('Location: ./reglages.php');
     exit;
 }
@@ -28,13 +28,9 @@ if($submit){
                 header('Location: ./reglages.php');
                 exit;
             }
-        }else{
-            $flash->set_title('Erreur ! #00001')->set_type('red')->add_messages('Une erreur c\'est produite lors de la suppression contacter un administrateur')->put();
-            header('Location: ./reglages.php');
-            exit;
         }
     }
-    $flash->set_title('Erreur ! #00005')->set_type('red')->add_messages('Une erreur c\'est produite lors de la suppression contacter un administrateur')->put();
+    $flash->set_title('Erreur !')->set_type('red')->add_messages('Une erreur c\'est produite lors de la suppression contacter un administrateur')->put();
     header('Location: ./reglages.php');
     exit;
 }

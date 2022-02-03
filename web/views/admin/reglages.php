@@ -43,7 +43,7 @@ $card_employees=$dao_card_employee->findAll();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Postes <span class="w3-badge"><?= $dao_post->count() ?></span> <a href="" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
+                <h3>Posts <span class="w3-badge"><?= $dao_post->count() ?></span> <a href="posts_add.php" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
                 
             </header>
             <div class="w3-container w3-padding">
@@ -60,7 +60,7 @@ $card_employees=$dao_card_employee->findAll();
                     echo '<td>'.$post->get_title().'</td>';
                     echo '<td class="w3-hide-small w3-hide-medium">'.$post->get_position_img().'</td>';
                     echo '<td class="w3-hide-small w3-hide-medium">'.$post->get_active().'</td>';
-                    echo '<td><a href="reglages.php" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href=""><i class="fa fa-trash" style="color:red;"></i></a></td>';
+                    echo '<td><a href="posts_edit.php?id='.$post->get_id().'" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href="posts_remove.php?id='.$post->get_id().'"><i class="fa fa-trash" style="color:red;"></i></a></td>';
                     echo '</tr>';
                 }
                 ?>
@@ -71,7 +71,7 @@ $card_employees=$dao_card_employee->findAll();
     <div class="w3-half w3-padding w3-container">
         <div class="w3-card">
             <header class="w3-container w3-light-grey">
-                <h3>Les membres <span class="w3-badge"><?= $dao_card_employee->count() ?></span> <a href="" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
+                <h3>Les membres <span class="w3-badge"><?= $dao_card_employee->count() ?></span> <a href="membres_add.php" class="w3-button w3-round-xxlarge w3-right"><i class="fas fa-plus" style="color:green;"></i></a></h3>
             </header>
             <div class="w3-container w3-padding">
                 <table class="w3-table-all">
@@ -87,7 +87,7 @@ $card_employees=$dao_card_employee->findAll();
                     echo '<td>'.$card_employee->get_nom_prenom().'</td>';
                     echo '<td class="w3-hide-small w3-hide-medium">'.$card_employee->get_role().'</td>';
                     echo '<td class="w3-hide-small w3-hide-medium">'.$card_employee->get_active().'</td>';
-                    echo '<td><a href="" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href=""><i class="fa fa-trash" style="color:red;"></i></a></td>';
+                    echo '<td><a href="membres_edit.php?=id='.$card_employee->get_id().'" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>&nbsp;<a class="w3-bar-item w3-button" href="membres_remove.php?=id='.$card_employee->get_id().'"><i class="fa fa-trash" style="color:red;"></i></a></td>';
                     echo '</tr>';
                 }
                 ?>

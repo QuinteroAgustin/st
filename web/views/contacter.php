@@ -158,6 +158,7 @@
         'subject' => $subject,
         'message' => $message,
         'imgs' => $images_name,
+        'id_user' => 1,
       );
       $obj_message = New Message($values);
       $dao_message = $dao_message->insert($obj_message);

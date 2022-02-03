@@ -1,13 +1,16 @@
-<?php $title = 'Ajouter une image'; ob_start(); require './../../init.php';?>
+<?php $title = 'Ajouter un membre'; ob_start(); require './../../init.php';?>
 <?php
 //On appele les objs qu'on utilise
 $flash = New Flash();
-$dao_slidershow = New SlidershowDAO();
+$dao_card_employee = New Card_employeeDAO();
 
 //variables
-$text=isset($_POST['text'])?$_POST['text']:NULL;
+$title=isset($_POST['title'])?$_POST['title']:NULL;
+$sub_title=isset($_POST['sub_title'])?$_POST['sub_title']:NULL;
+$message=isset($_POST['message'])?$_POST['message']:NULL;
+$sub_message=isset($_POST['sub_message'])?$_POST['sub_message']:NULL;
+$position_img=isset($_POST['position_img'])?$_POST['position_img']:NULL;
 $activer=isset($_POST['activer'])?$_POST['activer']:NULL;
-$position=isset($_POST['position'])?$_POST['position']:NULL;
 $file_name = null;
 $submit = isset($_POST['submit'])?$_POST['submit']:NULL;
 
@@ -15,12 +18,8 @@ $submit = isset($_POST['submit'])?$_POST['submit']:NULL;
 $messages = array();
 //debut des vérifs
 if ($submit) {
-    if (empty(trim($text))) {
-        $messages[] = "Le TEXTE est obligatoire.";
-    }
-
-    if (empty(trim($position))) {
-        $messages[] = "La POSITION est obligatoire.";
+    if (empty(trim($position_img))) {
+        $messages[] = "Le La position de l'image est obligatoire.";
     }
 
     if (!empty($_FILES['image']) && !empty($_FILES['image']['name'])) {
@@ -39,7 +38,7 @@ if ($submit) {
         if (in_array($img['type'], $type)) {
             if (count($img['extension']) <= 2 && in_array(strtolower(end($img['extension'])), $extensions)) {
                 if ($img['size'] <= $max_siez && $img['error'] == 0) {
-                    $file_name = 'slider_'.uniqid().'.'.strtolower(end($img['extension']));
+                    $file_name = 'posts_'.uniqid().'.'.strtolower(end($img['extension']));
                     if(move_uploaded_file($img['tmp_name'], ROOT.'/img/accueil/'.$file_name)) {
                         $flash->set_title('Bravo !')->set_type('green')->add_messages('Images bien envoyée');
                     } else {
@@ -67,8 +66,7 @@ if ($submit) {
             'img' => $file_name,
             'active' => (int)$activer,
             'display' => $position,
-            'text' => $text,
-            'id_user' => 1
+            'text' => $text
         );
         
         $obj_slidershow = New Slidershow($values);

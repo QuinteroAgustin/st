@@ -6,6 +6,7 @@ class Card_employee {
     private $description;
     private $img;
     private $active;
+    private $id_user;
 
     // Constructeur
     public function __construct(array $tableau = null)
@@ -131,6 +132,26 @@ class Card_employee {
     public function set_active($active)
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_user
+     */ 
+    public function get_id_user()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Set the value of id_user
+     *
+     * @return  self
+     */ 
+    public function set_id_user($id_user)
+    {
+        $this->id_user = $id_user;
 
         return $this;
     }

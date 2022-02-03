@@ -39,40 +39,42 @@ if ($submit) {
     }
 
     if (!empty($_FILES['image']) && !empty($_FILES['image']['name'])) {
-        unlink(ROOT.'/img/accueil/'.$slidershow->get_img());
-        $img = array(
-            'nameFile' => $_FILES['image']['name'],
-            'full_path' => $_FILES['image']['full_path'],
-            'type' => $_FILES['image']['type'],
-            'tmp_name' => $_FILES['image']['tmp_name'],
-            'error' => $_FILES['image']['error'],
-            'size' => $_FILES['image']['size'],
-            'extension' => explode('.', $_FILES['image']['name'])
-        );
-        $extensions = ['png','jpg','jpeg','gif'];
-        $type = ['image/png','image/jpg','image/jpeg','image/gif'];
-        $max_siez = 2000000;
-        if (in_array($img['type'], $type)) {
-            if (count($img['extension']) <= 2 && in_array(strtolower(end($img['extension'])), $extensions)) {
-                if ($img['size'] <= $max_siez && $img['error'] == 0) {
-                    $file_name = 'slider_'.uniqid().'.'.strtolower(end($img['extension']));
-                    if (move_uploaded_file($img['tmp_name'], ROOT.'/img/accueil/'.$file_name)) {
-                        $flash->set_title('Bravo !')->set_type('green')->add_messages('Images bien envoyée');
+        if(unlink(ROOT.'/img/accueil/'.$slidershow->get_img())){
+            $img = array(
+                'nameFile' => $_FILES['image']['name'],
+                'full_path' => $_FILES['image']['full_path'],
+                'type' => $_FILES['image']['type'],
+                'tmp_name' => $_FILES['image']['tmp_name'],
+                'error' => $_FILES['image']['error'],
+                'size' => $_FILES['image']['size'],
+                'extension' => explode('.', $_FILES['image']['name'])
+            );
+            $extensions = ['png','jpg','jpeg','gif'];
+            $type = ['image/png','image/jpg','image/jpeg','image/gif'];
+            $max_siez = 2000000;
+            if (in_array($img['type'], $type)) {
+                if (count($img['extension']) <= 2 && in_array(strtolower(end($img['extension'])), $extensions)) {
+                    if ($img['size'] <= $max_siez && $img['error'] == 0) {
+                        $file_name = 'slider_'.uniqid().'.'.strtolower(end($img['extension']));
+                        if (move_uploaded_file($img['tmp_name'], ROOT.'/img/accueil/'.$file_name)) {
+                            $flash->set_title('Bravo !')->set_type('green')->add_messages('Images bien envoyée');
+                        } else {
+                            $messages[] = "Erreur lors de l'envoie de l'image.";
+                        }
                     } else {
-                        $messages[] = "Erreur lors de l'envoie de l'image.";
+                        $messages[] = "L'image est trop volumineuse.";
                     }
                 } else {
-                    $messages[] = "L'image est trop volumineuse.";
+                    $messages[] = "Le Type de l'images n'est pas autorisée.";
                 }
             } else {
                 $messages[] = "Le Type de l'images n'est pas autorisée.";
             }
-        } else {
-            $messages[] = "Le Type de l'images n'est pas autorisée.";
+        }else{
+            $file_name=$slidershow->get_img();
         }
-    }else{
-        $file_name=$slidershow->get_img();
     }
+        
 
     //partie qui enregistre dans la bdd
     if (empty($messages) && !empty($file_name)) {
@@ -86,7 +88,8 @@ if ($submit) {
             'img' => $file_name,
             'active' => (int)$activer,
             'display' => $position,
-            'text' => $text
+            'text' => $text,
+            'id_user' => 1
         );
         
         $obj_slidershow = New Slidershow($values);
@@ -104,7 +107,22 @@ if ($submit) {
     }
 }
 ?>
-
+<?php
+//affichage des erreurs
+$msg ='';
+if (count($messages) > 0) {
+  $msg .= '<div class="w3-panel w3-red w3-display-container w3-round-xlarge">';
+  $msg .= "<span onclick=\"this.parentElement.style.display='none'\" class=\"w3-button w3-display-topright w3-round-xlarge\">&times;</span>";
+  $msg .= '<h3>Erreur !</h3>';
+  $msg .= '<ul>';
+  foreach ($messages as $a) {
+    $msg .= '<li>'.$a.'</li>';
+  }
+  $msg .= '</ul>';
+  $msg .= '</div>';
+  echo $msg;
+}
+?>
 <!-- edit une image -->
 <div class="w3-center w3-padding-64" id="contact">
   <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16"><?= $title ?></span>
@@ -137,7 +155,7 @@ if ($submit) {
       <label>Photo (Si besoin de changer l'image)</label>
       <input type='file' class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="image">
     </div>
-    <input type="submit" class="w3-button w3-block w3-black" name='submit' value="Moddifier">
+    <input type="submit" class="w3-button w3-block w3-black" name='submit' value="Moddifier la photo">
   </form>
 </div>
 <?php $content = ob_get_clean(); require ROOT.'/views/admin/templateadmin.php'; ?>

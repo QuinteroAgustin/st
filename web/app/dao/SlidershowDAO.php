@@ -79,12 +79,13 @@
     * @return Int
     */
     function insert(Slidershow $img) {
-        $sql = "INSERT INTO slidershow (img, active, display, text) VALUES (:img, :active, :display, :text)";
+        $sql = "INSERT INTO slidershow (img, active, display, text, id_user) VALUES (:img, :active, :display, :text, :id_user)";
         $params = array(
             ":img" => $img->get_img(),
             ":active" => $img->get_active(),
             ":display" => $img->get_display(),
-            ":text" => $img->get_text()
+            ":text" => $img->get_text(),
+            ":id_user" => $img->get_id_user()
         );
         try {
             $sth=$this->executer($sql, $params); 
@@ -101,13 +102,14 @@
     * @return Int
     */
     function update(Slidershow $img) {
-        $sql = "UPDATE slidershow SET img=:img, active=:active, display=:display, text=:text WHERE id=:id";
+        $sql = "UPDATE slidershow SET img=:img, active=:active, display=:display, text=:text, id_user=:id_user WHERE id=:id";
         $params = array(
             ":id"=>$img->get_id(),
             ":img" => $img->get_img(),
             ":active" => $img->get_active(),
             ":display" => $img->get_display(),
-            ":text" => $img->get_text()
+            ":text" => $img->get_text(),
+            ":id_user" => $img->get_id_user()
         );
         try {
             $sth=$this->executer($sql, $params); 
