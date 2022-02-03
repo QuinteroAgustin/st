@@ -74,7 +74,7 @@ if ($submit) {
         $dao_slidershow = $dao_slidershow->insert($obj_slidershow);
         if($dao_slidershow == 1){
             $flash->set_title('Bravo !')->set_type('green')->add_messages('Image ajouté !')->put();
-            header('Location: /index.php');
+            header('Location: reglages.php');
         }else{
             $flash->set_title('Erreur !')->set_type('red')->add_messages('Une erreur c\'est produite appeler un administrateur')->put();
             header('Location: /views/admin/immages_add.php');

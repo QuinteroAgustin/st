@@ -218,7 +218,7 @@
     } // function messageNonLu()
 
     /**
-    * compte le nombre de messages non lu
+    * supprime un message
     * @param id
     * @return Int
     */

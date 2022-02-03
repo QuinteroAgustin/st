@@ -117,4 +117,25 @@
         }
         return $nb;
     } // function update()
+
+    /**
+    * supprime un slidershow
+    * @param id
+    * @return Int
+    */
+    function delete($id) {
+        $sql = "DELETE FROM slidershow WHERE id=:id";
+        try {
+            $params = array(
+                ":id" => $id
+            );
+            $sth=$this->executer($sql, $params); 
+            $nb = $sth->rowCount();
+        } catch (PDOException $e) {
+            die("Erreur lors de la requête SQL : " . $e->getMessage());
+        }
+        
+        // Retourne un entier
+        return $nb;
+    } // function delete()
  }
