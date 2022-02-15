@@ -23,3 +23,4 @@ Route::get('/offre', [HomeController::class, 'offre'])->name('offre');
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
