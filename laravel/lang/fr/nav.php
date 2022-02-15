@@ -21,6 +21,7 @@ return [
     'home' => 'Accueil',
     'contact' => 'Nous Contacter',
     'offre' => 'Nos Offres',
+    "logout" => "Déconnexion",
 
 
 ];
