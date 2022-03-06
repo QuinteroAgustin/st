@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('card_employee', function (Blueprint $table) {
+        Schema::create('type_entretiens', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_prenom');
-            $table->string('role');
-            $table->text('description');
-            $table->string('img');
-            $table->integer('active');
+            $table->string('nom');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('card_employee');
+        Schema::dropIfExists('type_entretiens');
     }
 };

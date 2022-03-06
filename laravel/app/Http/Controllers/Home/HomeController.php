@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,9 @@ class HomeController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $posts = Post::where('active', 1)->orderByDesc('created_at')->take(5)->get();
+        dd($posts);
+        return view('home', ['posts' => $posts]);
     }
 
     /**

@@ -51,8 +51,8 @@ CREATE TABLE post(
         sub_title    Varchar (60) ,
         message      Mediumtext ,
         sub_message  Mediumtext ,
-        img          Varchar (60) NOT NULL ,
-        position_img Int NOT NULL ,
+        img          Varchar (60) ,
+        position_img Int ,
         active       Int NOT NULL ,
         date         Datetime NOT NULL ,
         id_user      Int NOT NULL
@@ -146,5 +146,20 @@ CREATE TABLE card_employee(
 	,CONSTRAINT card_employee_PK PRIMARY KEY (id)
 
 	,CONSTRAINT card_employee_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: factures
+#------------------------------------------------------------
+
+CREATE TABLE factures(
+        id       Int  Auto_increment  NOT NULL ,
+        nom      Varchar (50) NOT NULL ,
+        prix_ttc Float NOT NULL ,
+        id_user  Int NOT NULL
+	,CONSTRAINT factures_PK PRIMARY KEY (id)
+
+	,CONSTRAINT factures_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 

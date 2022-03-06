@@ -41,7 +41,12 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-pagination"></div>
-                      </div>
+                    </div>
+                    <!-- postes -->
+
+
+
+
 
                       <!-- avis -->
                       <section class="mb-20 text-gray-700">

@@ -13,9 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_entretiens', function (Blueprint $table) {
+        Schema::create('avis', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->string('prenom');
+            $table->string('message');
+            $table->string('note');
+            $table->string('img');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+
             $table->timestamps();
         });
     }
@@ -27,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_entretien');
+        Schema::dropIfExists('avis');
     }
 };

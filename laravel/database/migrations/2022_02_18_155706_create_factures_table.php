@@ -13,13 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('abonnement', function (Blueprint $table) {
+        Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->date('date_debut');
-            $table->date('date_fin');
-            $table->integer('id_user');
-            $table->integer('id_type_entretien');
-            $table->integer('id_entretien');
+            $table->string('titre');
+            $table->float('prix_ttc');
+            $table->float('prix_ht');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+
             $table->timestamps();
         });
     }
@@ -31,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abonnement');
+        Schema::dropIfExists('factures');
     }
 };

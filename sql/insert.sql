@@ -16,3 +16,18 @@ INSERT INTO `card_employee`(`nom_prenom`, `role`, `description`, `img`, `active`
 ('José Quintero','Président & fondateur','C\'est moi l\'expert en charge des chantiers et résolution de vos problèmes','team3.jpg', 1),
 ('Agustin Quintero','Responsable informatique','Fils de Mr Quintero, je suis le responsable des systèmes informatiques de l\'entreprise et développeur des applications web','team2.jpg', 1),
 ('Sylvia Quintero','Service comptable','La responsable du service comptablilité','team1.jpg', 1);
+
+INSERT INTO `posts`(`title`, `sub_title`, `message`, `sub_message`, `img`, `position_img`, `active`, `date`,`user_id`, `created_at`) VALUES 
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),
+('Titre de test','petit sujet de test','Le message est simple il sagit de faire comprendre que ici il y auras un message réel','sous messages (en italique ou gris je sais pas encore)','accueil.jpg',0,1, NOW(),1, NOW()),

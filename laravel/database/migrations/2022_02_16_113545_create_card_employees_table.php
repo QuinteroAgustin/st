@@ -13,17 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('card_employees', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('sub_title')->nullable();
-            $table->mediumText('sub_message')->nullable();
-            $table->mediumText('message')->nullable();
-            $table->string('img')->nullable();
-            $table->integer('position_img')->nullable();
+            $table->string('nom_prenom');
+            $table->string('role');
+            $table->text('description');
+            $table->string('img');
             $table->integer('active');
-            $table->dateTime('date');
-            $table->integer('id_user');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+
             $table->timestamps();
         });
     }
@@ -35,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('card_employees');
     }
 };

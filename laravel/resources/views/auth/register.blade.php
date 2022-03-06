@@ -12,13 +12,6 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Pseudo -->
-            <div>
-                <x-label for="pseudo" :value="__('auth.pseudo')" />
-
-                <x-input id="pseudo" class="block mt-1 w-full" type="text" name="pseudo" :value="old('pseudo')" required autofocus />
-            </div>
-
             <!-- Nom -->
             <div>
                 <x-label for="nom" :value="__('auth.nom')" />

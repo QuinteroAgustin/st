@@ -23,12 +23,18 @@ return new class extends Migration
             $table->string('ville');
             $table->string('cp');
             $table->string('subject');
-            $table->string('message');
+            $table->longText('message');
             $table->string('imgs')->nullable();
             $table->dateTime('date');
             $table->integer('active');
-            $table->integer('id_user');
             $table->string('title');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
 
             $table->timestamps();
         });

@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('slidershow', function (Blueprint $table) {
+        Schema::create('entretiens', function (Blueprint $table) {
             $table->id();
-            $table->string('img');
-            $table->integer('active')->default(0);
-            $table->string('display')->nullable();
-            $table->string('text')->nullable();
-            $table->integer('id_user');
+
+            $table->unsignedBigInteger('type_entretiens_id');
+            $table->foreign('type_entretiens_id')
+            ->references('id')
+            ->on('type_entretiens')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
+
+            $table->string('pseudo');
+            $table->float('prix');
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slidershow');
+        Schema::dropIfExists('entretiens');
     }
 };
